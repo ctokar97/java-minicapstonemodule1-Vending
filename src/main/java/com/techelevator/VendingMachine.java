@@ -34,6 +34,7 @@ public class VendingMachine {
 
         while(!validInput) {
 
+            System.out.println("---------------------------------");
             System.out.println("(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
             System.out.println("(3) Exit");
@@ -114,7 +115,7 @@ public class VendingMachine {
 
             String money = userInput.nextLine();
 
-            if(money.toLowerCase().equals("P")) {
+            if(money.toLowerCase().equals("p")) {
 
                 finish = true;
 
