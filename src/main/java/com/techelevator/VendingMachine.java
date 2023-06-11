@@ -300,7 +300,7 @@ public class VendingMachine {
 
     public void displayInventoryList() {
         for(Product product : inventoryList) {
-            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + product.getCategory() + " | " + product.getQuantity());
+            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + product.getPrice() + " | " + product.getQuantity());
         }
     }
 }
