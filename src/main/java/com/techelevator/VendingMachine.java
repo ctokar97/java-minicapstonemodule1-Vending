@@ -198,6 +198,31 @@ public class VendingMachine {
                 System.out.println(" Sold Out");
 
                 selectProduct();
+            } if (currentBalance <= (inventory.getPrice() * dispenseAmount)) {
+
+                System.out.println("insufficient Funds");
+                processMenu();
+            } else if (currentBalance >= (inventory.getPrice() *dispenseAmount)) {
+
+                if (inventory.getQuantity() < dispenseAmount) {
+
+                    System.out.println(" Not enough product available");
+
+                    selectProduct();
+            } if(inventory.getQuantity() >= dispenseAmount) {
+
+                    double startingBalance = currentBalance;
+                    currentBalance -= (inventory.getPrice() * dispenseAmount);
+                    inventory.dispense(dispenseAmount);
+                    double m = startingBalance;
+                    for (int i = 0; i < dispenseAmount; i++) {
+
+                        Log l = new Log(inventory.getName(), inventory.getSlotLocation(), m, (m - inventory.getPrice()));
+                        m -= inventory.getPrice();
+                    }
+                    processMenu();
+                }
+
             }
         }
 
@@ -274,7 +299,7 @@ public class VendingMachine {
 
     public void displayInventoryList() {
         for(Product product : inventoryList) {
-            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + product.getPrice() + " | " + product.getCategory());
+            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + product.getCategory() + " | " + product.getQuantity());
         }
     }
 }

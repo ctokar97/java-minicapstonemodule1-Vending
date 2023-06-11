@@ -12,7 +12,6 @@ public class Product {
     private static DecimalFormat decimalTo100Th = new DecimalFormat("0.00");
 
 
-
     public Product(String slotLocation, String name, double price, String category) {
         this.slotLocation = slotLocation;
         this.name = name;

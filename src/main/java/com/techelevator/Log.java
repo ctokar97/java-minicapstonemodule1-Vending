@@ -31,7 +31,7 @@ public class Log {
 
             } catch (IOException e) {
 
-                System.out.println("IO Exception");
+                System.out.println("File not created");
             }
         }
         helpToWriteLog();
