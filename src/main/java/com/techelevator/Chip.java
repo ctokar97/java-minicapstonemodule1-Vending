@@ -2,12 +2,14 @@ package com.techelevator;
 
 public class Chip extends Product{
 
-    public Chip(String name, double price) {
-        super(name, price);
+    public Chip(String location, String name, double price, String category) {
+
+        super (location, name, price, category);
     }
 
-        public String getEnjoy() {
-            return "Crunch Crunch, Yum!";
-        }
-
+    @Override
+    public void message() {
+        System.out.println("Crunch Crunch, Yum!");
+        System.out.println();
+    }
 }

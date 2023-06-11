@@ -2,11 +2,14 @@ package com.techelevator;
 
 public class Drink extends Product{
 
-    public Drink(String name, double price) {
-        super(name, price);
+    public Drink(String location,String name, double price, String category) {
+
+        super (location, name, price, category);
     }
 
-        public String getEnjoy() {
-            return "Glug Glug, Yum!";
-        }
+    @Override
+    public void message() {
+        System.out.println("Glug Glug, Yum!");
+        System.out.println();
+    }
 }

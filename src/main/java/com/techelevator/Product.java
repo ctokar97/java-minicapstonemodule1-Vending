@@ -1,13 +1,45 @@
 package com.techelevator;
 
-public abstract class Product {
+import java.text.DecimalFormat;
+
+public class Product {
+    private int quantity = 5;
+    private String slotLocation;
     private String name;
     private double price;
-    private int numberOfProducts = 5;
+    private String category;
 
-    public Product(String name, double price) {
+    private static DecimalFormat decimalTo100Th = new DecimalFormat("0.00");
+
+
+
+    public Product(String slotLocation, String name, double price, String category) {
+        this.slotLocation = slotLocation;
         this.name = name;
         this.price = price;
+        this.category = category;
+    }
+
+    public int dispense(int quantityToRemove) {
+        quantity = quantity - quantityToRemove;
+
+        System.out.println();
+        System.out.println(name + " $" + decimalTo100Th.format(price * quantityToRemove));
+        message();
+        System.out.println();
+        return quantity;
+    }
+
+    public void message() {
+
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getSlotLocation() {
+        return slotLocation;
     }
 
     public String getName() {
@@ -18,10 +50,7 @@ public abstract class Product {
         return price;
     }
 
-    public int getNumberOfProducts() {
-        return numberOfProducts;
+    public String getCategory() {
+        return category;
     }
-
-    public abstract String getEnjoy();
-
 }
