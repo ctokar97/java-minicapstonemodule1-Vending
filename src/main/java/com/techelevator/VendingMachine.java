@@ -41,22 +41,26 @@ public class VendingMachine {
             System.out.println("Please choose an option: ");
 
             String selection = userInput.nextLine();
-            if(selection.equals("1")) {
+            switch (selection) {
+                case "1":
 
-                displayInventoryList();
-                validInput = false;
+                    displayInventoryList();
+                    validInput = false;
 
-            } else if( selection.equals("2")) {
+                    break;
+                case "2":
 
-                validInput = true;
+                    validInput = true;
 
-                processMenu();
+                    processMenu();
 
-            } else if( selection.equals("3")) {
+                    break;
+                case "3":
 
-                validInput = true;
+                    validInput = true;
 
-                exit();
+                    exit();
+                    break;
             }
 
         }
@@ -76,24 +80,28 @@ public class VendingMachine {
 
             String selection = userInput.nextLine();
 
-            if (selection.equals("1")) {
+            switch (selection) {
+                case "1":
 
-                workingInput = true;
+                    workingInput = true;
 
-                feedMoney();
+                    feedMoney();
 
-            } else if (selection.equals("2")) {
+                    break;
+                case "2":
 
-                selectProduct();
-                workingInput = true;
+                    selectProduct();
+                    workingInput = true;
 
-            } else if (selection.equals("3")) {
+                    break;
+                case "3":
 
-                returnChange();
-                workingInput = true;
+                    returnChange();
+                    workingInput = true;
 
-                mainMenu();
+                    mainMenu();
 
+                    break;
             }
 
         }
@@ -231,15 +239,15 @@ public class VendingMachine {
 
         int change = (int)(currentBalance * 100);
 
-        int quarters = Math.round((float) change / 25);
+        int quarters = ( change / 25);
 
         change = change % 25;
 
-        int dimes = Math.round((float) change / 10);
+        int dimes = ( change / 10);
 
         change = change % 10;
 
-        int nickels = Math.round((float) change / 5);
+        int nickels = ( change / 5);
 
         change = change % 5;
 
@@ -272,17 +280,22 @@ public class VendingMachine {
                 double price = Double.parseDouble(data[2]);
                 String category = data[3];
 
-                if (category.toLowerCase().equals("chip")) {
-                    this.inventoryList.add(new Chip(location, name, price, category));
+                switch (category.toLowerCase()) {
+                    case "chip":
+                        this.inventoryList.add(new Chip(location, name, price, category));
 
-                } else if (category.toLowerCase().equals("candy")) {
-                    this.inventoryList.add(new Candy(location, name, price, category));
+                        break;
+                    case "candy":
+                        this.inventoryList.add(new Candy(location, name, price, category));
 
-                } else if (category.toLowerCase().equals("drink")) {
-                    this.inventoryList.add(new Drink(location, name, price, category));
+                        break;
+                    case "drink":
+                        this.inventoryList.add(new Drink(location, name, price, category));
 
-                } else if (category.toLowerCase().equals("gum")) {
-                    this.inventoryList.add(new Gum(location, name, price, category));
+                        break;
+                    case "gum":
+                        this.inventoryList.add(new Gum(location, name, price, category));
+                        break;
                 }
 
             }

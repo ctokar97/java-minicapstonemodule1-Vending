@@ -3,12 +3,13 @@ package com.techelevator;
 import java.io.IOException;
 
 public class VendingMachineIsAlive {
-    public static void main(String[] args) throws NumberFormatException, IOException {
-        VendingMachine machineAlive = new VendingMachine();
+    public static void main(String[] args)  {
+       try {
+           VendingMachine machineAlive = new VendingMachine();
+           machineAlive.mainMenu();
 
-
-        machineAlive.mainMenu();
-
+       }catch(NumberFormatException | IOException e) {
+           System.out.println("Whoops something went wrong");
+       }
     }
-
 }
