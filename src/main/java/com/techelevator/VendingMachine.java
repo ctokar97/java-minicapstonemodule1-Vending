@@ -17,7 +17,7 @@ public class VendingMachine {
 
     protected double currentBalance = 0.00;
 
-    private static DecimalFormat decimalTo100Th = new DecimalFormat("0.00");
+    private static final DecimalFormat DECIMAL_TO_100_TH = new DecimalFormat("0.00");
 
 
     public VendingMachine() {
@@ -71,7 +71,7 @@ public class VendingMachine {
             System.out.println("(1) Feed Money");
             System.out.println("(2) Select Product");
             System.out.println("(3) Finish Transaction");
-            System.out.println("Current balance: $" + decimalTo100Th.format(currentBalance));
+            System.out.println("Current balance: $" + DECIMAL_TO_100_TH.format(currentBalance));
             System.out.println("Please enter a valid option: ");
 
             String selection = userInput.nextLine();
@@ -109,7 +109,7 @@ public class VendingMachine {
 
             System.out.println("Please select amount to feed: (1) = ($1), (2) = ($2), (5) = ($5), (10) = ($10)");
 
-            System.out.println("Current balance: $" + decimalTo100Th.format(currentBalance));
+            System.out.println("Current balance: $" + DECIMAL_TO_100_TH.format(currentBalance));
 
             System.out.println("Insert Bills or enter P to go to Select Product:  ");
 
@@ -126,7 +126,7 @@ public class VendingMachine {
 
                 currentBalance += Double.parseDouble(money);
 
-                Log logFeedMoney = new Log("FEED MONEY: ", startingBalance, currentBalance);
+
 
             } else {
 
@@ -139,7 +139,7 @@ public class VendingMachine {
     public void selectProduct() throws NumberFormatException, IOException {
 
         displayInventoryList();
-        System.out.println("Current balance: $" + decimalTo100Th.format(currentBalance));
+        System.out.println("Current balance: $" + DECIMAL_TO_100_TH.format(currentBalance));
         System.out.println("Please enter an Item code: ");
 
         String userSelection = userInput.nextLine().toUpperCase();
@@ -215,11 +215,8 @@ public class VendingMachine {
                     double startingBalance = currentBalance;
                     currentBalance -= (inventory.getPrice() * dispenseAmount);
                     inventory.dispense(dispenseAmount);
-                    double m = startingBalance;
                     for (int i = 0; i < dispenseAmount; i++) {
-
-                        Log l = new Log(inventory.getName(), inventory.getSlotLocation(), m, (m - inventory.getPrice()));
-                        m -= inventory.getPrice();
+                        System.out.println("Enjoy!");
                     }
                     processMenu();
                 }
@@ -230,23 +227,23 @@ public class VendingMachine {
     }
 
 
-    public void returnChange() throws IOException {
+    public void returnChange() {
 
-        int change = (int)(Math.ceil(currentBalance * 100));
+        int change = (int)(currentBalance * 100);
 
-        int quarters = Math.round((int)change / 25);
+        int quarters = Math.round((float) change / 25);
 
         change = change % 25;
 
-        int dimes = Math.round((int)change / 10);
+        int dimes = Math.round((float) change / 10);
 
         change = change % 10;
 
-        int nickels = Math.round((int)change / 5);
+        int nickels = Math.round((float) change / 5);
 
         change = change % 5;
 
-        Log logReturnChange = new Log("GIVE CHANGE: ", currentBalance, 0.00);
+        System.out.println("GIVE CHANGE: " + " $" + DECIMAL_TO_100_TH.format(currentBalance));
 
         currentBalance = 0;
 
@@ -300,7 +297,7 @@ public class VendingMachine {
 
     public void displayInventoryList() {
         for(Product product : inventoryList) {
-            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + product.getPrice() + " | " + product.getQuantity());
+            System.out.println(product.getSlotLocation() + " | " + product.getName() + " | $" + DECIMAL_TO_100_TH.format(product.getPrice()) + " | " + product.getQuantity());
         }
     }
 }

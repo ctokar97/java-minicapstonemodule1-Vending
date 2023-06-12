@@ -32,7 +32,7 @@ public class CandyTest {
     @Test
     public void B3_Candy_returns_munch_munch_yum() {
         // Arrange
-        Candy candy = new Candy("B2", "Cowtales", 1.50, "Candy");
+        Candy candy = new Candy("B3", "Wonka Bar", 1.50, "Candy");
         String expectedMessage = "Munch Munch, Yum!";
 
         // Act
@@ -44,7 +44,7 @@ public class CandyTest {
     @Test
     public void B4_Candy_returns_munch_munch_yum() {
         // Arrange
-        Candy candy = new Candy("B2", "Cowtales", 1.50, "Candy");
+        Candy candy = new Candy("B4", "Crunchie", 1.75, "Candy");
         String expectedMessage = "Munch Munch, Yum!";
 
         // Act
